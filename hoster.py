@@ -19,7 +19,7 @@ class WatcherHandler(FileSystemEventHandler):
 
         # Only track modifications and additions, ignore deletions
         if not event.is_directory and event.event_type in ['created', 'modified']:
-            print(f'File {event.src_path} created or modified, committing and pushing...')
+            print(f'File {event.src_path} created or modified')
             self.commit_and_push(event)
 
     def commit_and_push(self, event):
@@ -37,7 +37,7 @@ class WatcherHandler(FileSystemEventHandler):
             origin = repo.remotes.origin
             origin.push(branch)
 
-            print(f'File {event.src_path} ')
+            print(f'File {event.src_path} pushed to Github')
         except Exception as e:
             print(f'Error: {e}')
 
