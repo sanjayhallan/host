@@ -36,8 +36,6 @@ class WatcherHandler(FileSystemEventHandler):
             # Push to GitHub
             origin = repo.remotes.origin
             origin.push(branch)
-
-            print('Changes have been committed and pushed to GitHub.')
         except Exception as e:
             print(f'Error: {e}')
 
