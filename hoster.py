@@ -3,6 +3,7 @@ import os
 import git
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+from datetime import datetime
 
 # Define the repository path and GitHub details
 repo_path = r'C:\Users\PC\git\host'  # Windows path with raw string notation (r'')
@@ -19,8 +20,7 @@ class WatcherHandler(FileSystemEventHandler):
 
         # Only track modifications and additions, ignore deletions
         if not event.is_directory and event.event_type in ['created', 'modified']:
-            print(f'File {event.src_path} created/modified, pushing to Github.')
-            self.commit_and_push()
+            commit_and_push()
 
 def commit_and_push():
     try:
@@ -36,6 +36,7 @@ def commit_and_push():
         # Push to GitHub
         origin = repo.remotes.origin
         origin.push(branch)
+        print(f'{datetime.now()} pushing to Github.')
     except Exception as e:
         print(f'Error: {e}')
 
