@@ -36,7 +36,7 @@ def commit_and_push():
         # Push to GitHub
         origin = repo.remotes.origin
         origin.push(branch)
-        print(f'{datetime.now()} pushing to Github.')
+        print(f'{datetime.now()} pushed to Github')
     except Exception as e:
         print(f'Error: {e}')
 
