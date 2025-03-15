@@ -19,7 +19,7 @@ class WatcherHandler(FileSystemEventHandler):
 
         # Only track modifications and additions, ignore deletions
         if not event.is_directory and event.event_type in ['modified']:
-            print(f'File {event.src_path} has been modified or added, pushing to Github')
+            print(f'File {event.src_path} has been modified, pushing to Github')
             self.commit_and_push()
 
     def commit_and_push(self):
