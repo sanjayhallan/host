@@ -20,9 +20,9 @@ class WatcherHandler(FileSystemEventHandler):
 
         # Only track modifications and additions, ignore deletions
         if not event.is_directory and event.event_type in ['created', 'modified']:
-            commit_and_push()
+            commit_and_push(event.src_path)
 
-def commit_and_push():
+def commit_and_push(src_path="all"):
     try:
         # Initialize the repository
         repo = git.Repo(repo_path)
@@ -36,7 +36,7 @@ def commit_and_push():
         # Push to GitHub
         origin = repo.remotes.origin
         origin.push(branch)
-        print(f'{datetime.now()} pushed to Github')
+        print(f'{datetime.now()} {src_path} pushed to Github')
     except Exception as e:
         print(f'Error: {e}')
 
