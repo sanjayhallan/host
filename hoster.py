@@ -60,4 +60,5 @@ def start_watching():
 
 # Run the script
 if __name__ == "__main__":
+    input("Ensure tradestation has loaded fully!!! press any key continue:")
     start_watching()
