@@ -45,7 +45,7 @@ def start_watching():
     observer = Observer()
     observer.schedule(event_handler, path=repo_path, recursive=True)  # Monitor all subdirectories
     observer.start()
-    print(f'Started watching for file modifications and additions in {repo_path}...')
+    print(f'Started watching for file modifications in {repo_path}...')
 
     try:
         while True:
