@@ -19,27 +19,25 @@ class WatcherHandler(FileSystemEventHandler):
 
         # Only track modifications and additions, ignore deletions
         if not event.is_directory and event.event_type in ['created', 'modified']:
-            print(f'File {event.src_path} created or modified')
-            self.commit_and_push(event)
+            print(f'File {event.src_path} created/modified, pushing to Github.')
+            self.commit_and_push()
 
-    def commit_and_push(self, event):
-        try:
-            # Initialize the repository
-            repo = git.Repo(repo_path)
+def commit_and_push():
+    try:
+        # Initialize the repository
+        repo = git.Repo(repo_path)
 
-            # Add all changes (excluding .git directory)
-            repo.git.add(A=True)
+        # Add all changes (excluding .git directory)
+        repo.git.add(A=True)
 
-            # Commit the changes
-            repo.index.commit(commit_message)
+        # Commit the changes
+        repo.index.commit(commit_message)
 
-            # Push to GitHub
-            origin = repo.remotes.origin
-            origin.push(branch)
-
-            print(f'File {event.src_path} pushed to Github')
-        except Exception as e:
-            print(f'Error: {e}')
+        # Push to GitHub
+        origin = repo.remotes.origin
+        origin.push(branch)
+    except Exception as e:
+        print(f'Error: {e}')
 
 # Initialize the observer
 def start_watching():
@@ -47,8 +45,11 @@ def start_watching():
     observer = Observer()
     observer.schedule(event_handler, path=repo_path, recursive=True)  # Monitor all subdirectories
     observer.start()
-    print(f'Started watching for file modifications and additions in {repo_path}')
 
+    print(f'Pushing file modifications in {repo_path}')
+    commit_and_push()
+
+    print(f'Started watching for file modifications and additions in {repo_path}')
     try:
         while True:
             time.sleep(1)
