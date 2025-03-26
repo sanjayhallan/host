@@ -6,7 +6,7 @@ from watchdog.events import FileSystemEventHandler
 from datetime import datetime
 
 # Define the repository path and GitHub details
-repo_path = r'C:\Users\PC\git\host\activity'  # Windows path with raw string notation (r'')
+repo_path = r'C:\Users\PC\git\host'  # Windows path with raw string notation (r'')
 
 branch = 'main'  # Change this if you're using a different branch
 commit_message = 'Auto commit on file change or addition'
