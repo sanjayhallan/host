@@ -44,7 +44,7 @@ def commit_and_push(src_path="all"):
 def start_watching():
     event_handler = WatcherHandler()
     observer = Observer()
-    observer.schedule(event_handler, path=repo_path, recursive=True)  # Monitor all subdirectories
+    observer.schedule(event_handler, path=repo_path + r"\activity", recursive=False)  # Monitor all subdirectories
     observer.start()
 
     print(f'Pushing file modifications in {repo_path}')
