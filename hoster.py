@@ -7,6 +7,7 @@ from datetime import datetime
 
 # Define the repository path and GitHub details
 repo_path = r'C:\Users\PC\git\host'  # Windows path with raw string notation (r'')
+watch_path = repo_path + r"\activity"
 
 branch = 'main'  # Change this if you're using a different branch
 commit_message = 'Auto commit on file change or addition'
@@ -44,13 +45,13 @@ def commit_and_push(src_path="all"):
 def start_watching():
     event_handler = WatcherHandler()
     observer = Observer()
-    observer.schedule(event_handler, path=repo_path + r"\activity", recursive=False)  # Monitor all subdirectories
+    observer.schedule(event_handler, path=watch_path, recursive=False)  # Monitor all subdirectories
     observer.start()
 
-    print(f'Pushing file modifications in {repo_path}')
+    print(f'Pushing file modifications in {watch_path}')
     commit_and_push()
 
-    print(f'Started watching for file modifications and additions in {repo_path}')
+    print(f'Started watching for file modifications and additions in {watch_path}')
     try:
         while True:
             time.sleep(1)
