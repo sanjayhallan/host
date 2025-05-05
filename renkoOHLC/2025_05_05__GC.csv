@@ -74,3 +74,5 @@ datetime, ask_open, ask_high, ask_low, ask_close, bid_open, bid_high, bid_low, b
 05/05/2025 08:54:54,3274.70,3275.60,3274.00,3274.10,3274.50,3275.40,3273.80,3273.90
 05/05/2025 08:57:38,3274.10,3274.40,3273.00,3273.00,3273.90,3274.20,3272.70,3272.70
 05/05/2025 08:57:38,3274.10,3274.40,3273.00,3273.00,3273.90,3274.20,3272.70,3272.70
+datetime, ask_open, ask_high, ask_low, ask_close, bid_open, bid_high, bid_low, bid_close
+datetime, ask_open, ask_high, ask_low, ask_close, bid_open, bid_high, bid_low, bid_close
