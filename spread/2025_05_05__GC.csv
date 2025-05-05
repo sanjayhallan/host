@@ -657,3 +657,5 @@ datetime, lowest_spread, highest_spread
 05/05/2025 16:21:31,3,1
 05/05/2025 16:22:54,4,1
 05/05/2025 16:23:46,3,1
+datetime, lowest_spread, highest_spread
+05/05/2025 16:23:46,2,2
