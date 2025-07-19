@@ -58,7 +58,6 @@ def commit_and_push():
             # Push to GitHub
             origin = repo.remotes.origin
             origin.push(branch)
-            post_todays_ranking()
             print(f'{datetime.now()} all pushed')
         else:
             print(f'{datetime.now()} no changes to push')
@@ -70,3 +69,4 @@ if __name__ == "__main__":
     combine_all()
     write_rank_high_low()
     commit_and_push()
+    post_todays_ranking()
